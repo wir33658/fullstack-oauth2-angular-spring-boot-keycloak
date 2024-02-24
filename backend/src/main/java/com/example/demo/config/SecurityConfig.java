@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -21,8 +23,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(Customizer.withDefaults())
             .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
+                .requestMatchers("/test", "/hello").permitAll()
+                .anyRequest().authenticated()
             )
+//            .formLogin(withDefaults())
             .oauth2ResourceServer((oauth2) -> oauth2.jwt(
                     jwt -> jwt.jwtAuthenticationConverter(customJwtConverter())
             ));

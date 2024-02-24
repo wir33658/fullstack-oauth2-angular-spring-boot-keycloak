@@ -38,7 +38,8 @@ services:
       KC_HEALTH_ENABLED: 'true'
       KC_HTTP_ENABLED: 'true'
       KC_METRICS_ENABLED: 'true'
-      KC_HOSTNAME_URL: http://localhost:8180
+#      KC_HOSTNAME_URL: http://localhost:8180
+      KC_HOSTNAME_URL: https://fuzzy-guacamole-x9vj4qwx763v959-8180.app.github.dev
       KC_PROXY: reencrypt
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: password

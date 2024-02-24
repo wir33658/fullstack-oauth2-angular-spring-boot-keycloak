@@ -1,6 +1,10 @@
 # fullstack-oauth2-angular-spring-boot-keycloak
 An OAuth2 fullstack example with keycloak, angular and spring boot.
 
+YouTube : https://www.youtube.com/watch?v=DLszg2ul85U
+
+(Info: I created a GitHub-OAuth2-app "my-test-realm" (see: https://github.com/settings/applications/2488878) : ClientID = cebf75f8c1b501b1300e; ClientSecret = 61e78a9e033b16bf604308dc9bf657bf33349682 )
+
 ## setup keycloak
 
 Go to `keycloak` folder, modify `Dockerfile` or `docker-compose.yml` (e.g. adjust the `postgres_data` volume) and start up postgres and keycloak via `docker compose up --build`.
@@ -15,6 +19,11 @@ Check if the keycloak admin console is reachable (`http://localhost:8180/`).
 
 
 ## angular webapp
+
+Prerequisits : npm install -g @angular/cli
+Check        : ng version (if there -> ok)
+Then         : ng add angular-oauth2-oicd
+
 
 Angular webapp is in `webapp`. Made with angular 17.
 

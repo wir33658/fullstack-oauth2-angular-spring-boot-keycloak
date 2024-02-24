@@ -21,8 +21,9 @@ export class AppComponent {
   }
 
   getHelloText() {
-    this.httpClient.get<{ message: string }>('http://localhost:8080/hello', {
-      headers: {
+//    this.httpClient.get<{ message: string }>('http://localhost:8080/hello', {
+    this.httpClient.get<{ message: string }>('https://fuzzy-guacamole-x9vj4qwx763v959-8080.app.github.dev/hello', {
+        headers: {
         'Authorization': `Bearer ${this.oauthService.getAccessToken()}`
       }
     }).subscribe(result => {

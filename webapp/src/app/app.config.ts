@@ -5,9 +5,13 @@ import { AuthConfig, OAuthService, provideOAuthClient } from 'angular-oauth2-oid
 import { provideHttpClient } from '@angular/common/http';
 
 export const authCodeFlowConfig: AuthConfig = {
-  issuer: 'http://localhost:8180/realms/my-test-realm',
-  tokenEndpoint: 'http://localhost:8180/realms/my-test-realm/protocol/openid-connect/token',
-  redirectUri: window.location.origin,
+//  issuer: 'http://localhost:8180/realms/my-test-realm',
+//  tokenEndpoint: 'http://localhost:8180/realms/my-test-realm/protocol/openid-connect/token',
+//  redirectUri: window.location.origin,
+  issuer: 'https://fuzzy-guacamole-x9vj4qwx763v959-8180.app.github.dev/realms/my-test-realm',
+//  issuer: 'http://localhost:8180/realms/my-test-realm',
+  tokenEndpoint: 'https://fuzzy-guacamole-x9vj4qwx763v959-8180.app.github.dev/realms/my-test-realm/protocol/openid-connect/token',
+  redirectUri: 'https://fuzzy-guacamole-x9vj4qwx763v959-4200.app.github.dev',
   clientId: 'my-webapp-client',
   responseType: 'code',
   scope: 'openid profile',
