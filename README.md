@@ -3,7 +3,10 @@ An OAuth2 fullstack example with keycloak, angular and spring boot.
 
 YouTube : https://www.youtube.com/watch?v=DLszg2ul85U
 
-(Info: I created a GitHub-OAuth2-app "my-test-realm" (see: https://github.com/settings/applications/2488878) : ClientID = cebf75f8c1b501b1300e; ClientSecret = 61e78a9e033b16bf604308dc9bf657bf33349682 )
+(Info: 
+    I created a GitHub-OAuth2-app "my-test-realm" (see: https://github.com/settings/applications/2488878) : ClientID = cebf75f8c1b501b1300e; ClientSecret = CHECK OUT PADLOCK "OAuth-Stuff" 
+    I created a Google-OAuth2-app "my-test-realm" (see: https://console.cloud.google.com/apis/credentials/oauthclient/744884992620-9h7f4ek46p3lb8orj967u9gfj76vqmvj.apps.googleusercontent.com?project=my-test-realm-1708802799682) : ClientID = 744884992620-9h7f4ek46p3lb8orj967u9gfj76vqmvj.apps.googleusercontent.com; ClientSecret = CHECK OUT PADLOCK "OAuth-Stuff"
+    )
 
 ## setup keycloak
 
