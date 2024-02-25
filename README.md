@@ -8,6 +8,20 @@ YouTube : https://www.youtube.com/watch?v=DLszg2ul85U
     I created a Google-OAuth2-app "my-test-realm" (see: https://console.cloud.google.com/apis/credentials/oauthclient/744884992620-9h7f4ek46p3lb8orj967u9gfj76vqmvj.apps.googleusercontent.com?project=my-test-realm-1708802799682) : ClientID = 744884992620-9h7f4ek46p3lb8orj967u9gfj76vqmvj.apps.googleusercontent.com; ClientSecret = CHECK OUT PADLOCK "OAuth-Stuff"
     )
 
+## summary starting things up (terminal)
+- Keycloak:
+  - cd keycloak
+  - docker compose up --build
+  - Login Keycloak : https://fuzzy-guacamole-x9vj4qwx763v959-8180.app.github.dev (admin/password)
+
+- Webapp:
+  - cd webapp
+  - ng serve
+  - WebApp : https://fuzzy-guacamole-x9vj4qwx763v959-4200.app.github.dev/ (testuser-1/testpw oder GitHub oder Google Login)
+
+- backend/DemoApplication.java -> Java Debug (to start it)
+
+
 ## setup keycloak
 
 Go to `keycloak` folder, modify `Dockerfile` or `docker-compose.yml` (e.g. adjust the `postgres_data` volume) and start up postgres and keycloak via `docker compose up --build`.

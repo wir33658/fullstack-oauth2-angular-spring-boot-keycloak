@@ -9,32 +9,57 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.SecurityFilterChain;
+
+import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer.AuthorizationManagerRequestMatcherRegistry;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // Add this annotation to an @Configuration class to have the Spring Security configuration defined in any WebSecurityConfigurer or more likely by exposing a SecurityFilterChain bean
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    // This is called ones at startup.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // Every http request will go through this first
         http.cors(Customizer.withDefaults())
-            .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/test", "/hello").permitAll()
-                .anyRequest().authenticated()
+            .authorizeHttpRequests(matcherRegistry -> 
+                matcherRegistry
+                    .requestMatchers("/test")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated()
             )
 //            .formLogin(withDefaults())
-            .oauth2ResourceServer((oauth2) -> oauth2.jwt(
-                    jwt -> jwt.jwtAuthenticationConverter(customJwtConverter())
+            .oauth2ResourceServer(resourceServerConfigurer -> 
+                resourceServerConfigurer.jwt(jwtConfigurer -> 
+                    jwtConfigurer.jwtAuthenticationConverter(customJwtConverter()
+                )
             ));
         return http.build();
     }
 
-    @Bean
+    /*
+    private AuthorizationManagerRequestMatcherRegistry suff(AuthorizationManagerRequestMatcherRegistry matcherRegistry){
+        var v1 = matcherRegistry.requestMatchers("/test");
+        var v2 = v1.permitAll();
+        var v3 = v2.anyRequest();
+        var v4 = v3.authenticated();
+        return v4;
+    }
+    */
+    
+
+    
+    // This is called ones at startup. (Looks like its called during above "requestMatchers(..)" setup)
+    // @Bean
     public Converter<Jwt, CustomJwt> customJwtConverter() {
         return new CustomJwtConverter();
     }
+    
 }

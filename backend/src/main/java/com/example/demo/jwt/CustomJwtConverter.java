@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CustomJwtConverter implements Converter<Jwt, CustomJwt> {
 
+    // This will be called at every http request
     @Override
     public CustomJwt convert(@NonNull Jwt jwt) {
         // Extract claims and authorities as needed
