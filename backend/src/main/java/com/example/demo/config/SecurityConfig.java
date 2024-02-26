@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -35,31 +36,24 @@ public class SecurityConfig {
                     .anyRequest()
                     .authenticated()
             )
-//            .formLogin(withDefaults())
-            .oauth2ResourceServer(resourceServerConfigurer -> 
-                resourceServerConfigurer.jwt(jwtConfigurer -> 
-                    jwtConfigurer.jwtAuthenticationConverter(customJwtConverter()
-                )
-            ));
+            .oauth2ResourceServer(buildOASC());
+//            .oauth2ResourceServer(resourceServerConfigurer ->
+//                resourceServerConfigurer.jwt(jwtConfigurer ->
+//                    jwtConfigurer.jwtAuthenticationConverter(customJwtConverter()
+//                )
+//            ));
         return http.build();
     }
 
-    /*
-    private AuthorizationManagerRequestMatcherRegistry suff(AuthorizationManagerRequestMatcherRegistry matcherRegistry){
-        var v1 = matcherRegistry.requestMatchers("/test");
-        var v2 = v1.permitAll();
-        var v3 = v2.anyRequest();
-        var v4 = v3.authenticated();
-        return v4;
+//    @Bean
+    public Customizer<OAuth2ResourceServerConfigurer<HttpSecurity>> buildOASC() {
+        return new MyResourceServerConfigurer();
     }
-    */
-    
-
     
     // This is called ones at startup. (Looks like its called during above "requestMatchers(..)" setup)
     // @Bean
-    public Converter<Jwt, CustomJwt> customJwtConverter() {
-        return new CustomJwtConverter();
-    }
+//    public Converter<Jwt, CustomJwt> customJwtConverter() {
+//        return new CustomJwtConverter();
+//    }
     
 }

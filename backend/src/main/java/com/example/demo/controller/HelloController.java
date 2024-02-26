@@ -12,8 +12,8 @@ import java.text.MessageFormat;
 
 @RestController
 @CrossOrigin(
-//        origins = "http://localhost:4200", 
-        origins = "https://fuzzy-guacamole-x9vj4qwx763v959-4200.app.github.dev",
+        origins = "http://localhost:4200",
+//        origins = "https://fuzzy-guacamole-x9vj4qwx763v959-4200.app.github.dev",
         allowedHeaders = "*",
         methods = { RequestMethod.GET }
 )

@@ -39,7 +39,7 @@ Check if the keycloak admin console is reachable (`http://localhost:8180/`).
 
 Prerequisits : npm install -g @angular/cli
 Check        : ng version (if there -> ok)
-Then         : ng add angular-oauth2-oicd
+Then         : ng add angular-oauth2-oidc
 
 
 Angular webapp is in `webapp`. Made with angular 17.
